@@ -8,21 +8,39 @@ from utils.code_examples import get_code_example
 def show_sidebar_options():
     locations = [
         {
-            "id": "chicago",
-            "name": "Chicago",
-            "address": "Chicago, Illinois",
-            "lat": 41.88691800264782,
-            "lon":  -87.62784085443968,
+            "id": "cedarburg",
+            "name": "Cedarburg",
+            "address": "506 N Wauwatosa Rd, Cedarburg, Wisconsin",
+            "lat": 43.294122342779595,
+            "lon": -88.00369765327844,
             "tz": "America/Chicago",
             "units": "imperial",
         },
         {
-            "id": "new-york",
-            "name": "Soho",
-            "address": "Soho, New York",
-            "lat": 40.724879946382124,
-            "lon": -74.00263414797246,
-            "tz": "America/New_York",
+            "id": "indianapolis",
+            "name": "Indianapolis",
+            "address": "8516 Madison Ave, Indianapolis, Indiana",
+            "lat": 39.64338319463557,
+            "lon": -86.12042970199795,
+            "tz": "America/Indiana/Indianapolis",
+            "units": "imperial",
+        },
+        {
+            "id": "lincolnwood",
+            "name": "Lincolnwood",
+            "address": "6401 N Cicero Ave, Lincolnwood, Illinois",
+            "lat": 41.99758331799406,
+            "lon": -87.74798341727173,
+            "tz": "America/Chicago",
+            "units": "imperial",
+        },
+        {
+            "id": "overland",
+            "name": "Overland",
+            "address": "9791 Page Ave, Overland, Missouri",
+            "lat": 38.68904494616209,
+            "lon": -90.37457800202583,
+            "tz": "America/Chicago",
             "units": "imperial",
         },
     ]
@@ -117,7 +135,9 @@ def fetch_suggested_radius(lat, lon, radius_unit="mi", industry="retail"):
     suggested_radius = phq.radius.search(
         location__origin=f"{lat},{lon}", radius_unit=radius_unit, industry=industry
     )
-
+    # For Demo Purposes, using fixed radius of 10miles
+    suggested_radius.radius=10.0
+    
     return suggested_radius.to_dict()
 
 
@@ -142,5 +162,5 @@ def show_map_sidebar_code_examples():
             st.markdown(get_code_example(example["filename"]))
 
     st.sidebar.caption(
-        "Get the code for this app at [GitHub](https://github.com/predicthq/streamlit-retail-demo)"
+        "Get the code for this app at [GitHub](https://github.com/predicthq/streamlit-retail-demo-caseys)"
     )

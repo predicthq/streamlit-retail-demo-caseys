@@ -59,7 +59,7 @@ def show_map(lat, lon, radius_meters, events):
             initial_view_state=pdk.ViewState(
                 latitude=lat,
                 longitude=lon,
-                zoom=11,
+                zoom=10,
             ),
             layers=[
                 # Radius layer
